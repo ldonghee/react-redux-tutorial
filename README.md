@@ -16,3 +16,5 @@
 5. 컨테이너 컴포넌트 생성
 - CounterContainer
 - TodoContainer
+
+6. redux-actions 라이브러리 적용
