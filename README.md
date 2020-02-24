@@ -20,3 +20,13 @@
 6. redux-actions 라이브러리 적용
 
 7. todos 모듈의 리듀서 immer 적용
+
+8. useSelector, useDispatch Hooks 사용하여 connect 함수 대체
+- CounterContainer 적용
+- TodosContainer 적용
+
+9. useStore Hooks 사용하여 리덕스 스토어 객체 사용
+- TodosContainer 적용
+
+10. useActions 유틸 Hook 생성
+- TodoContainer 적용
