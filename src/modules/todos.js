@@ -1,4 +1,5 @@
 import { createAction, handleActions } from 'redux-actions';
+import produce from 'immer';
 
 // 액션 타입 정의
 const CHANGE_INPUT = 'todos/CHANGE_INPUT';
@@ -53,6 +54,31 @@ const initialState = {
 // 리듀서 함수
 const todos = handleActions(
     {
+        [CHANGE_INPUT]: (state, { payload: input }) =>
+            produce(state, draft => {
+                draft.input = input;
+            }),
+        [INSERT]: (state, { payload: todo }) =>
+            produce(state, draft => {
+                draft.todos.push(todo);
+            }),
+        [TOGGLE]: (state, { payload: id }) =>
+            produce(state, draft => {
+                const todo = draft.todos.find(todo => todo.is === id);
+                todo.done = !todo.done;
+            }),
+        [REMOVE]: (state, { payload: id }) =>
+            produce(state, draft => {
+                const index = draft.todos.findIndex(todo => todo.id === id);
+                draft.todos.splice(index, 1);
+            }),
+    },
+    initialState,
+);
+
+/*
+const todos = handleActions(
+    {
         [CHANGE_INPUT]: (state, { payload: input }) => ({
             ...state,
             input,
@@ -74,6 +100,7 @@ const todos = handleActions(
     },
     initialState,
 );
+*/
 /*
 function todos(state = initialState, action) {
     switch (action.type) {
