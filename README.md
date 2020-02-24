@@ -18,3 +18,5 @@
 - TodoContainer
 
 6. redux-actions 라이브러리 적용
+
+7. todos 모듈의 리듀서 immer 적용
